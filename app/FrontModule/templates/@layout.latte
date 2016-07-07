@@ -27,11 +27,14 @@
 	<!-- Custom styles for this template -->
 	<link href="{$basePath}/css/front.css" rel="stylesheet">
 
+	<!-- Fonts -->
+	<link href="{$basePath}/css/fonts.css" rel="stylesheet">
+
 </head>
 
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top menu-link">
 	<div class="container">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -61,15 +64,16 @@
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">free WIFI</a></li>
+				<li class="hidden-xs"><a href="#"><img src="{$basePath}/vector/freewifi.svg" class="icon-lg" alt="free Wifi"></a></li>
 			</ul>
 		</div><!--/.nav-collapse -->
-	</div>
+		<img src="{$basePath}/vector/freewifi.svg" class="visible-xs freewifi-fixed-right-top-corner" alt="free Wifi" />
 </nav>
 
-<div class="container">
+<div id="main-content">
+	<div class="container">
 		{block content}{/block}
-
+	</div>
 </div> <!-- /container -->
 
 <footer>
@@ -80,6 +84,10 @@
 <!-- Bootstrap core JavaScript -->
 <script src="{$basePath}/js/jquery.js"></script>
 <script src="{$basePath}/js/bootstrap.min.js"></script>
+
+<!-- Site JavaScript -->
+<script src="{$basePath}/js/main.js"></script>
+
 
 </body>
 </html>
