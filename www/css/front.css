@@ -22,6 +22,7 @@ footer {
     z-index: 11;
     color: #AAA;
     font-weight: 300;
+    padding-top: 10px;
 }
 
 nav {
@@ -43,6 +44,7 @@ nav.navbar-inverse {
     display: block;
     overflow: auto;
     z-index: 10;
+    color: rgba(255,255,255,0.8);
 }
 
 h1, h2, h3 {
@@ -91,3 +93,9 @@ h3 {
     right:75px;
     height: 30px;
 }
+
+img.logo {
+    margin-top: -15px;
+    height: 50px;
+}
+

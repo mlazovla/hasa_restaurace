@@ -1,4 +1,11 @@
 {block content}
-
-<h1>Antonio <small>pizza - restaurant</small></h1>
+	{foreach $article as $a}
+		<div class="page" id="page{$a->id}">
+			<h1>
+				{$a->name}
+				<small><!-- podnadpis TODO --></small>
+			</h1>
+			{$a->text|noescape}
+		</div>
+	{/foreach}
 {/block}
