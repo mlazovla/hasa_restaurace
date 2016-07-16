@@ -36,7 +36,10 @@ class ArticlePresenter extends BasePresenter
 		if(!$article) {
 			$this->error('Data nebyla nalezena v databázi.', 404);
 		}
-		$this['articleForm']->setDefaults($article->toArray());
+		$defaults = $article->toArray();
+		$defaults['parent_id'] = ($defaults['parent_id']) ? $defaults['parent_id'] : '';
+		$this['articleForm']->setDefaults($defaults);
+
 	}
 
 	protected function createComponentArticleForm()
@@ -50,6 +53,16 @@ class ArticlePresenter extends BasePresenter
 
 		$form->addText('subname', 'Podnadpis:');
 
+		$article = clone $this->article;
+		$parents = $article->where('parent_id', null)->fetchPairs('id', 'menu');
+		$parents[''] = '--- Hlavní nabídka ---';
+		$articleId = $this->getParameter('id');
+		if ($articleId && isset($parents[$articleId])) {
+			unset($parents[$articleId]);
+		}
+
+
+		$form->addSelect('parent_id', 'Nadřazená položka menu', $parents)->setDefaultValue('');
 
 		$form->addTextArea('text', 'Článek:')
 			->setAttribute('class', 'tinyMCE');
@@ -74,7 +87,7 @@ class ArticlePresenter extends BasePresenter
 			'subname' => $values['subname'],
 			'text' => $values['text'],
 			'visible' => $values['visible'],
-
+			'parent_id' => ($values['parent_id']) ? $values['parent_id'] : null,
 		];
 
 		$articleId = $this->getParameter('id');

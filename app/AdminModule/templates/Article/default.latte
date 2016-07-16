@@ -15,6 +15,7 @@
             <th>Menu</th>
             <th>Nadpis</th>
             <th>Vytvořeno</th>
+            <th>Nadřazené menu</th>
             <th>Viditelné</th>
             <th>Akce</th>
         </thead>
@@ -30,6 +31,9 @@
                 <td>
                     {$a->created_at|date:'H:i j.n.Y'}
                 </td>
+				<td>
+					{if $a->parent}{$a->parent->menu}{/if}
+				</td>
                 <td>
                     {if $a->visible}<i class="glyphicon glyphicon-check"> </i>{/if}
                 </td>

@@ -86,6 +86,10 @@
 	</div>
 </footer>
 
+{foreach $backgrounds as $i}
+	<div id="background-slide{$i->id}" class="background-slide" style="background-image:url('{$basePath}/content/background/{$i->id}.jpg'); animation-delay: {$iterator->getCounter() * 7}s;"></div>
+{/foreach}
+
 
 <!-- Bootstrap core JavaScript -->
 <script src="{$basePath}/js/jquery.js"></script>

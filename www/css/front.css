@@ -1,4 +1,4 @@
-/* Vladimir Mlazovsky design for restorant pages */
+/* Vladimir Mlazovsky design for Antonio pizza pages */
 body {
     padding-top: 50px; /*navbar*/
     padding-bottom: 50px; /*footer*/
@@ -116,6 +116,10 @@ img.logo {
     left: 0;
 }
 
+/**
+ * LOADING
+ */
+
 #loading img {
     height: 23vh;
     margin-bottom: 15px;
@@ -129,10 +133,30 @@ img.logo {
     text-decoration: underline;
 
 }
-
-
-
-
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+/**
+ * BACKGROUND SLIDESHOW
+ */
+
+.background-slide {
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center top;
+    color: transparent;
+    background-color: transparent;
+    background-image: url('../img/bg-low.jpg');
+    opacity: 0;
+    animation: fade 10s ease;
+    animation-iteration-count: 1;
+}
+
+@-moz-keyframes fade { 25% { opacity: 1; } 90% { opacity: 1; } 100% { opacity: 0; } }
+@-webkit-keyframes fade { 25% { opacity: 1; } 90% { opacity: 1; } 100% { opacity: 0; }  }
+@keyframes fade { 25% { opacity: 1; } 90% { opacity: 1; } 100% { opacity: 0; }  }

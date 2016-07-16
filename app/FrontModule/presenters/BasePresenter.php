@@ -20,6 +20,12 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	 */
 	public $article;
 
+	/**
+	 * @var Model\Background
+	 * @inject
+	 */
+	public $background;
+
 	protected function getDatabase() {
 		return $this->context->getService('database');
 	}
@@ -27,10 +33,11 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	public function beforeRender()
 	{
 		$this->template->menu = $this->article->select('id, menu')->where('visible = 1 AND parent_id IS NULL');
+		$this->template->backgrounds = $this->background;
 	}
 
 	/**
-	 * Notify an humean on email
+	 * Notify an human on email
 	 *
 	 * @param $subject
 	 * @param $message
