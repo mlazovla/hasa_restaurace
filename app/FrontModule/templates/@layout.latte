@@ -45,10 +45,12 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#"><img src="{$basePath}/img/logo.png" class="logo"/></a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
+				<li class="hidden-xs">
+					<a class="navbar-brand" href="#"><img src="{$basePath}/img/logo.png" class="logo"/></a>
+				</li>
 				{foreach $menu as $i}
 					{if count($i->related('article'))}
 						<li class="dropdown">
@@ -66,11 +68,12 @@
 					{/if}
 				{/foreach}
 			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li class="hidden-xs"><a href="#"><img src="{$basePath}/vector/freewifi.svg" class="icon-lg" alt="free Wifi"></a></li>
-			</ul>
+			<img src="{$basePath}/vector/freewifi.svg" class="hidden-xs hidden-sm icon-lg" id="retarded-wifi-logo" alt="free Wifi">
+
 		</div><!--/.nav-collapse -->
 		<img src="{$basePath}/vector/freewifi.svg" class="visible-xs freewifi-fixed-right-top-corner" alt="free Wifi" />
+		<a href="#" class="navbar-brand visible-xs logo-fixed-left-top-corner"><img src="{$basePath}/img/logo.png" class="logo"/></a>
+
 </nav>
 
 <div id="main-content">

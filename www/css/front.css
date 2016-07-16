@@ -71,7 +71,7 @@ h3 {
     font-size: 30px;
 }
 
-#main-content a, footer a, footer a:visited {
+#main-content a, footer a, footer a:visited, footer a:hover, footer a:active {
     color:white;
 }
 
@@ -98,9 +98,34 @@ h3 {
     height: 30px;
 }
 
+#retarded-wifi-logo {
+    position: fixed;
+    top: 17px;
+    right:30px;
+}
+
+.logo-fixed-left-top-corner {
+    position: fixed;
+    top: 0px;
+    left:0px;
+    margin-bottom: -50px;
+}
+
 img.logo {
     margin-top: -15px;
+    padding-top: 0px;
     height: 50px;
+}
+
+@media (min-width: 768px) and (max-width:991px) {
+    .navbar-nav>li>a {
+        padding: 2.5px 15px;
+    }
+    img.logo {
+        margin-top: -2.5px;
+        padding-top: 0px;
+        height: 50px;
+    }
 }
 
 #loading {
