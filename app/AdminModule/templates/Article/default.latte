@@ -4,44 +4,38 @@
  *}
 {block content}
 
-<h1 n:block=title>Články</h1>
-    <div>
-        <p>
-            Jednotlivé články se zakládají do databáze. Každý článek by měl obsahovat svůj obrázek, který se pak promítne po jeho levé části.
-        </p>
-    </div>
+<h1 n:block=title>Stránky</h1>
 
     <div class="pull-right">
-        <a n:href="create" class="btn btn-success">Nový článek</a>
+        <a n:href="create" class="btn btn-success">Nová stránka</a>
     </div>
 {if count($article)}
     <table class="table table-bordered table-responsive">
         <thead>
-            <th>Obrázek</th>
-            <th>Název</th>
+            <th>Menu</th>
+            <th>Nadpis</th>
             <th>Vytvořeno</th>
-            <th>Annotace</th>
+            <th>Viditelné</th>
             <th>Akce</th>
         </thead>
         <tbody>
             {foreach $article as $a}
             <tr>
                 <td>
-                    <img src="{$basePath}/content/article/{$a->id}.jpg" class="article-preview-image" />
+                    {$a->menu}
                 </td>
                 <td>
-                    {$a->name}
+                    {$a->name}<small>{$a->subname}</small>
                 </td>
                 <td>
                     {$a->created_at|date:'H:i j.n.Y'}
                 </td>
                 <td>
-                    {$a->annotation|noescape|striptags|truncate:50}
+                    {if $a->visible}<i class="glyphicon glyphicon-check"> </i>{/if}
                 </td>
                 <td>
                     <a n:href="edit $a->id" class="btn btn-warning">Upravit</a>
                     <a n:href="delete $a->id" class="btn btn-danger">Smazat</a>
-                    <a n:href=":Front:Article:article $a->id" class="btn btn-info" target="_blank" title="Oteřít na webu"><i class="glyphicon glyphicon-eye-open"></i></a>
                 </td>
             </tr>
             {/foreach}

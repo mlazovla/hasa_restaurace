@@ -26,7 +26,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 
 	public function beforeRender()
 	{
-		$this->template->menu = $this->article->select('id, menu')->where('visible = 1');
+		$this->template->menu = $this->article->select('id, menu')->where('visible = 1 AND parent_id IS NULL');
 	}
 
 	/**

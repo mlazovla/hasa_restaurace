@@ -16,19 +16,8 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="main-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a n:href="Article:default">Články</a></li>
-				<li><a n:href="Menu:default">Meníčko</a></li>
-
-
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Události <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a n:href="Event:default">Události</a></li>
-						<li><a n:href="Ticket:default">Vstupenky</a></li>
-						<li><a n:href="Registration:default">Registrace</a></li>
-						<li><a n:href="Newsletter:default">Newsletter</a></li>
-					</ul>
-				</li>
+				<li><a n:href="Article:default">Stránky</a></li>
+				<li><a n:href="Background:default">Pozadí</a></li>
 
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ext. nástroje <span class="caret"></span></a>

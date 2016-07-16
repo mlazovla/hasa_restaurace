@@ -5,17 +5,17 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<meta name="description" content="Hasova restaurace">
+	<meta name="description" content="Pizza Antonio">
 	<meta name="author" content="Vladimír Mlázovský">
 
 	<!-- FACEBOOK -->
-	<meta property="og:image" content="http://domena.cz/img/logo.png">
+	<meta property="og:image" content="http://antonio-pizza.cz/img/logo.png">
 	<meta property="og:image:type" content="image/png">
 	<meta property="og:image:width" content="256">
 	<meta property="og:image:height" content="256">
-	<meta property="og:url" content="http://demena.cz">
-	<meta property="og:title" content="Hasova restaurace">
-	<meta property="og:description" content="Restaurace... adresa kde ji najít">
+	<meta property="og:url" content="http://antonio-pizza.cz">
+	<meta property="og:title" content="Pizza Antonio">
+	<meta property="og:description" content="Pizzeria Antonio">
 
 	<link rel="icon" href="{$basePath}/favicon.ico">
 
@@ -34,6 +34,8 @@
 
 <body>
 
+{block beforeNav}{/block}
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -43,27 +45,26 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" n:href="Homepage:default"><img src="{$basePath}/img/logo.png" class="logo"/></a>
+			<a class="navbar-brand" href="#"><img src="{$basePath}/img/logo.png" class="logo"/></a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				{foreach $menu as $i}
-					<li {if isset($selectedArticle) && $selectedArticle->id == $i->id}class="active"{/if}>
-						<a data-pageid="{$i->id}" class="menu-link">{$i->menu}</a>
-					</li>
+					{if count($i->related('article'))}
+						<li class="dropdown">
+							<a data-pageid="{$i->id}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{$i->menu} <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								{foreach $i->related('article') as $subi}
+									<li><a data-pageid="{$subi->id}" class="menu-link">{$subi->menu}</a></li>
+								{/foreach}
+							</ul>
+						</li>
+					{else}
+						<li>
+							<a data-pageid="{$i->id}" class="menu-link">{$i->menu}</a>
+						</li>
+					{/if}
 				{/foreach}
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Action</a></li>
-						<li><a href="#">Another action</a></li>
-						<li><a href="#">Something else here</a></li>
-						<li role="separator" class="divider"></li>
-						<li class="dropdown-header">Nav header</li>
-						<li><a href="#">Separated link</a></li>
-						<li><a href="#">One more separated link</a></li>
-					</ul>
-				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="hidden-xs"><a href="#"><img src="{$basePath}/vector/freewifi.svg" class="icon-lg" alt="free Wifi"></a></li>
@@ -79,8 +80,9 @@
 </div> <!-- /container -->
 
 <footer>
-	<div class="container">
-		<p>&copy; 2015 Company, Inc.</p>
+	<div class="container small">
+		Pizza Antonio | <a href="tel:+420257921449"> tel: 257 921 449</a> <span class="hidden-xs"> | otevřeno od 11:00 do 23:00</span>
+		<span class="pull-right hidden-xs"><i>Vladimír Mlázovský 2016</i></span>
 	</div>
 </footer>
 

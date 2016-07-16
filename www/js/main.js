@@ -9,6 +9,11 @@ $( ".menu-link" ).click(function() {
     $( ".page" ).slideUp();
     $( "#page" + $(this).data("pageid") ).slideDown();
 
+    // toggle navbar
+    if ($("#navbar").attr("class") == "navbar-collapse collapse in") {
+        $('.navbar-toggle').click();
+    }
+
     if ($("#main-content").css('left') != "0px") { // animate first page
         $( "#main-content" ).animate({
             left: "0%",
@@ -27,4 +32,25 @@ $( ".menu-link" ).click(function() {
             });
         });
     }
+});
+
+$(window).load( function() {
+    $( "#loading" ).animate({
+        top: "-100%",
+    }, 600, function() {
+        // Animation complete.
+    });
+});
+
+$(document).ready( function() {
+    $("#skipLoading").show();
+    $( ".page" ).slideUp();
+
+    $("#skipLoading").on('click', function () {
+        $( "#loading" ).animate({
+            top: "-100%",
+        }, 600, function() {
+            // Animation complete.
+        });
+    });
 });

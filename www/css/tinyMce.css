@@ -1,45 +1,35 @@
-* {
-    font-family: 'Georgia', serif;
-}
-
 body {
-    background-color: rgb(197, 230, 235);
-    font-family: 'Georgia', serif;
-    line-height: 17px;
-    color: rgb(0, 117, 117);
-    letter-spacing: 0.3px;
-    font-size: 13px;
+    background: #3A3A3A url('../img/bg-tinymce.jpg');
+    background-size: cover;
+    background-position: center top;
+    font-family: Roboto, sans-serif;
+    font-weight: 100;
+    color: rgba(255,255,255,0.8);
+    font-size: 14px;
+    line-height: 1.25;
 }
 
 h1, h2, h3 {
-    color: rgb(226, 9, 25);
-    font-weight: 200;
+    font-family: GreatVibes, fantasy;
 }
 
 h1 {
-    font-size: 24px;
+    color: rgba(255,251,188,0.9);
+    text-shadow: 0 1px 0 rgba(0,0,30,0.8);
+    font-size: 45px;
 }
+h1 small {
+    color: rgba(230,220,182,0.8);
+}
+
 h2 {
-    font-size: 18px;
+    color: rgba(255,251,188,0.9);
+    text-shadow: 0 1px 0 rgba(0,0,30,0.8);
+    font-size: 35px;
 }
+
 h3 {
-    font-size: 15px;
+    color: rgba(255,251,188,0.9);
+    font-size: 30px;
 }
 
-a {
-    color: firebrick;
-    text-decoration: none;
-}
-
-a:hover {
-    color: firebrick;
-    text-decoration: underline;
-}
-
-img {
-    margin-bottom:10px;
-    margin-right: 10px;
-    padding: 2px 2px 2px 2px;
-    background-color: white;
-    border: 1px solid rgb(0, 192, 192);
-}
