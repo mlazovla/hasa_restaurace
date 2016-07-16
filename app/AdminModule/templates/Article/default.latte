@@ -40,7 +40,17 @@
                 <td>
                     <a n:href="edit $a->id" class="btn btn-warning">Upravit</a>
                     <a n:href="delete $a->id" class="btn btn-danger">Smazat</a>
-                </td>
+					{if $iterator->isFirst()}
+						<a href="#" class="btn btn-default"><i class="glyphicon glyphicon-arrow-up"></i></a>
+					{else}
+						<a n:href="moveUp $a->id" class="btn btn-warning"><i class="glyphicon glyphicon-arrow-up"></i></a>
+					{/if}
+					{if $iterator->isLast()}
+						<a href="#" class="btn btn-default"><i class="glyphicon glyphicon-arrow-down"></i></a>
+					{else}
+						<a n:href="moveDown $a->id" class="btn btn-warning"><i class="glyphicon glyphicon-arrow-down"></i></a>
+					{/if}
+				</td>
             </tr>
             {/foreach}
         </tbody>

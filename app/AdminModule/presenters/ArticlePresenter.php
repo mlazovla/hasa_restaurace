@@ -25,7 +25,7 @@ class ArticlePresenter extends BasePresenter
 
 	public function renderDefault()
 	{
-		$this->template->article = $this->article->order('id DESC');
+		$this->template->article = $this->article->order('order ASC');
 	}
 
 	/**
@@ -101,6 +101,7 @@ class ArticlePresenter extends BasePresenter
 			$this->flashMessage('Změny uloženy.', 'success');
 
 		} else {
+			$articleData['order'] = $this->article->createSelectionInstance()->max('order') + 1;
 			$article = $this->article->insert($articleData);
 			$this->flashMessage('Článek vložen do databáze.', 'success');
 		}
@@ -110,9 +111,53 @@ class ArticlePresenter extends BasePresenter
 		$this->redirect('edit', $article->id);
 	}
 
-	public function actionDelete($id) {
+	/**
+	 * Delete Article by id
+	 *
+	 * @param $id
+	 */
+	public function actionDelete($id)
+	{
 		$this->article->get($id)->delete();
 		$this->flashMessage('Článek odstraněn.', 'success');
+		$this->redirect('default');
+	}
+
+	public function actionMoveUp($id)
+	{
+		$article = $this->article->get($id);
+		$article2 = null;
+		foreach ($this->article->createSelectionInstance()->where('order < '.$article->order)->order('order DESC')->limit(1) as $i) {
+			$article2 = $i;
+		}
+		if ($article2 == null) {
+			$this->flashMessage('Položka je již jako první.', 'warning');
+			$this->redirect('default');
+		}
+		$tmp = $article->order;
+		$article->update(['order' => $article2->order]);
+		$article2->update(['order' => $tmp]);
+
+		$this->flashMessage('Položka posunuta nahoru.', 'success');
+		$this->redirect('default');
+	}
+
+	public function actionMoveDown($id)
+	{
+		$article = $this->article->get($id);
+		$article2 = null;
+		foreach ($this->article->createSelectionInstance()->where('order > '.$article->order)->order('order ASC')->limit(1) as $i) {
+			$article2 = $i;
+		}
+		if ($article2 == null) {
+			$this->flashMessage('Položka je již jako poslední.', 'warning');
+			$this->redirect('default');
+		}
+		$tmp = $article->order;
+		$article->update(['order' => $article2->order]);
+		$article2->update(['order' => $tmp]);
+
+		$this->flashMessage('Položka posunuta dolů.', 'success');
 		$this->redirect('default');
 	}
 }
