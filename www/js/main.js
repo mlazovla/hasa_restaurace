@@ -64,5 +64,6 @@ $(document).ready( function() {
         }, 450, function() {
             // Animation complete.
         });
+        
     });
 });

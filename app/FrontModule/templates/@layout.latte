@@ -55,16 +55,16 @@
 				{foreach $menu as $i}
 					{if count($i->related('article'))}
 						<li class="dropdown">
-							<a data-pageid="{$i->id}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{$i->menu} <span class="caret"></span></a>
+							<a data-pageid="{$i->id}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{$i->menu|noescape} <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								{foreach $i->related('article') as $subi}
-									<li><a data-pageid="{$subi->id}" class="menu-link">{$subi->menu}</a></li>
+									<li><a data-pageid="{$subi->id}" class="menu-link">{$subi->menu|noescape}</a></li>
 								{/foreach}
 							</ul>
 						</li>
 					{else}
 						<li>
-							<a data-pageid="{$i->id}" class="menu-link">{$i->menu}</a>
+							<a data-pageid="{$i->id}" class="menu-link">{$i->menu|noescape}</a>
 						</li>
 					{/if}
 				{/foreach}

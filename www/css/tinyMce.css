@@ -33,3 +33,53 @@ h3 {
     font-size: 30px;
 }
 
+h4,h5,h6 {
+    color: white;
+    text-shadow: 0 1px 0 rgba(0,0,30,0.8);
+    margin-bottom: 12px;
+    margin-top: 18px;
+}
+
+/**
+ * TABLES
+ */
+
+table {
+    margin: auto auto;
+    border: 2px solid rgba(167,170,180,0.8);
+    background-color: rgba(255,250,250,0.1);
+    box-shadow:0 0 8px rgba(0,0,18,0.2);
+}
+thead {
+    font-weight: 600;
+    border-bottom: 3px double rgba(167,170,180,0.8);
+    background-color: rgba(255,250,250,0.2);
+}
+table th {
+    text-align: center;
+}
+
+table td, table th {
+    padding: 2px 4px;
+}
+
+table td {
+    text-align: left;
+    vertical-align: top;
+}
+
+table tr.summary {
+    border-top: 1px solid rgba(167,170,180,0.8);
+}
+
+table tr.summary td {
+    text-align: center;
+}
+
+a, a:visited, a:hover, a:active {
+    color:white;
+}
+
+table.bordered-col td, table.bordered-col th{
+    border-left: 1px solid rgba(167,170,180,0.8);
+}
