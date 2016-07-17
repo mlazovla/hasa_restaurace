@@ -185,3 +185,15 @@ img.logo {
 @-moz-keyframes fade { 25% { opacity: 1; } 90% { opacity: 1; } 100% { opacity: 0; } }
 @-webkit-keyframes fade { 25% { opacity: 1; } 90% { opacity: 1; } 100% { opacity: 0; }  }
 @keyframes fade { 25% { opacity: 1; } 90% { opacity: 1; } 100% { opacity: 0; }  }
+
+#fucking-line-in-menu {
+    position: absolute;
+    top: 25px; left: calc(50% - 230px);;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    color: white;
+    height: 0px;
+    width: 560px;
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.6);
+}
