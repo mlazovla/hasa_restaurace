@@ -52,3 +52,20 @@ img.preview-image-small {
 	max-height: 40px;
 	max-width: 50px;
 }
+
+/**
+ * FLAGS
+ */
+.flag {
+    display: inline-block;
+    height: 0.8em;
+    width: 1.2em;
+    margin-top: 0.2em;
+    margin-bottom: 0.0em;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.flag-cz {  background-image: url("../vector/flag-cz.svg");  }
+.flag-gb {  background-image: url("../vector/flag-gb.svg");  }
+.flag-ru {  background-image: url("../vector/flag-ru.svg");  }
+.flag-de {  background-image: url("../vector/flag-de.svg");  }

@@ -8,7 +8,7 @@ body {
     background: #3A3A3A url('../img/bg-low.jpg');
     background-size: cover;
     background-position: center top;
-    font-family: Roboto;
+    font-family: 'Roboto';
     font-weight: 300;
 
 }
@@ -40,7 +40,7 @@ nav.navbar-inverse {
     top: 50px;
     left:-125%;
     background: rgba(0,0,30,0.5);
-    box-shadow: 0px 0px 10px 10px rgba(0,0,30,0.5);
+    box-shadow: 0 0 10px 10px rgba(0,0,30,0.5);
     display: block;
     overflow: auto;
     z-index: 10;
@@ -53,7 +53,7 @@ nav.navbar-inverse {
 }
 
 h1, h2, h3 {
-    font-family: GreatVibes;
+    font-family: 'GreatVibes';
 }
 
 h1 {
@@ -118,15 +118,16 @@ h4,h5,h6 {
 
 .logo-fixed-left-top-corner {
     position: fixed;
-    top: 0px;
-    left:0px;
+    top: 0;
+    left:0;
     margin-bottom: -50px;
 }
 
 img.logo {
     margin-top: -15px;
-    padding-top: 0px;
+    padding-top: 0;
     height: 50px;
+
 }
 
 @media (min-width: 768px) and (max-width:991px) {
@@ -135,7 +136,7 @@ img.logo {
     }
     img.logo {
         margin-top: -2.5px;
-        padding-top: 0px;
+        padding-top: 0;
         height: 50px;
     }
 }
@@ -204,7 +205,7 @@ img.logo {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
     color: white;
-    height: 0px;
+    height: 0;
     width: 560px;
     border: none;
     border-top: 1px solid rgba(255,255,255,0.6);
@@ -251,7 +252,6 @@ table.bordered-col td, table.bordered-col th{
 }
 
 
-
 /**
  * FLAGS
  */
@@ -268,3 +268,4 @@ table.bordered-col td, table.bordered-col th{
  .flag-gb {  background-image: url("../vector/flag-gb.svg");  }
  .flag-ru {  background-image: url("../vector/flag-ru.svg");  }
  .flag-de {  background-image: url("../vector/flag-de.svg");  }
+ .flag-fr {  background-image: url("../vector/flag-fr.svg");  }

@@ -25,7 +25,7 @@
 	<link href="{$basePath}/css/bootstrap.min.css" rel="stylesheet">
 
 	<!-- Custom styles for this template -->
-	<link href="{$basePath}/css/front.css" rel="stylesheet">
+	<link href="{$basePath}/css/front.css?v=20160723" rel="stylesheet">
 
 	<!-- Fonts -->
 	<link href="{$basePath}/css/fonts.css" rel="stylesheet">
@@ -50,7 +50,7 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li class="hidden-xs">
-					<a class="navbar-brand" href="#"><img src="{$basePath}/img/logo.png" class="logo"/></a>
+					<a class="navbar-brand" href="#"><img src="{$basePath}/vector/logo.svg" class="logo"/></a>
 				</li>
 				{foreach $menu as $i}
 					{if count($i->related('article'))}
@@ -88,7 +88,11 @@
 
 <footer>
 	<div class="container small">
-		Pizza Antonio | <a href="tel:+420257921449"> tel: 257 921 449</a> <span class="hidden-xs"> | otevřeno od 11:00 do 23:00</span>
+		Pizza Antonio |
+		<a href="tel:+420257921449"> tel: 257 921 449</a> |
+		<span class="hidden-xs"> otevřeno od 11:00 do 23:00 | </span>
+		&nbsp;&nbsp;<a href="https://www.tripadvisor.cz" target="_blank" title="Tripadvisor recenze"><img src="{$basePath}/img/tripadvisor.png" class="icon"/></a>&nbsp;&nbsp;
+		<a href="https://www.facebook.com/pages/Pizza-Restaurant-Antonio/148419115220983?fref=ts" target="_blank" title="Pizza Antonio facebook"><img src="{$basePath}/img/fb.png" class="icon"/></a>
 		<span class="pull-right hidden-xs"><i>Vladimír Mlázovský 2016</i></span>
 	</div>
 </footer>

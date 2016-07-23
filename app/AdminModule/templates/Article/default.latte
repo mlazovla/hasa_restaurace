@@ -23,10 +23,10 @@
             {foreach $article as $a}
             <tr>
                 <td>
-                    {$a->menu}
+                    {$a->menu|noescape}
                 </td>
                 <td>
-                    {$a->name}<small>{$a->subname}</small>
+                    {$a->name|noescape} <small>{$a->subname|noescape}</small>
                 </td>
                 <td>
                     {$a->created_at|date:'H:i j.n.Y'}
