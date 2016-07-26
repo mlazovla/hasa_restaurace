@@ -44,7 +44,7 @@ class ArticlePresenter extends BasePresenter
 
 	protected function createComponentArticleForm()
 	{
-		$form = new UI\Form;
+		$form = new Nette\Application\UI\Form;
 
 		$form->addText('menu', 'Položka menu:')
 			->setRequired();
