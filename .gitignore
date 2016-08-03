@@ -4,4 +4,4 @@
 *.DS_Store
 /app/config/config.local.neon
 /app/config/config.neon
-
+/www/content

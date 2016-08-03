@@ -14,23 +14,78 @@ use Nette\Application\UI;
  */
 class BackgroundPresenter extends BasePresenter
 {
-	const FILE_PATH = 'bg/';
+	const SAVE_DIR = "../www/content/background/";
+
+	/**
+	 * @var Model\Background
+	 * @inject
+	 */
+	public $background;
 
 	public function renderDefault()
 	{
-
+		$this->template->background = $this->background;
 	}
 
-	/* form succeed
+	/**
+	 * Create form for uploading images for better emails design
+	 * @return Form
+	 */
+	protected function createComponentBackgroundForm()
+	{
+		$form = new UI\Form();
 
-	if ($this->saveFile($values['image'], self::FILE_PATH . $article->id . '.jpg')) {
-			$this->flashMessage('Obrázek uložen.', 'success');
+		$form->addUpload('image', 'Obrázek JPG')
+			->addRule($form::IMAGE, 'Vyberte prosím obrázek JPG')
+			->addRule($form::MAX_FILE_SIZE, 'Obrázky nesmí přesáhnout 2MB', 2250000)
+			->setRequired();
+
+		$form->addSubmit('send', 'Nahrát');
+
+		$form->onSuccess[] = array($this, 'backgroundFormSucceeded');
+
+		return $form;
+	}
+
+	public function backgroundFormSucceeded(UI\Form $form)
+	{
+		$values = $form->getValues();
+
+		/** @var FileUpload $uploadedImage */
+		$uploadedImage = $values['image'];
+		$this->background->insert(['id'=>null]);
+
+		$id = 1;
+		foreach ($this->background->createSelectionInstance()->order('id DESC')->limit(1) as $row) {
+			$id = $row->id;
 		}
 
-	$form->addUpload('image', 'Obrázek JPG')
-			->addCondition($form::FILLED)
-			->addRule($form::IMAGE, 'Zvolený soubor není obrázek.')
-			->addRule($form::MAX_FILE_SIZE, 'Maximální velikost souboru je 5 MB.', 6 * 1024 * 1024);
+		try {
+			$uploadedImage->move(self::SAVE_DIR . $id . '.jpg');
+			$this->flashMessage('Pozadí je nahráno.', 'success');
+		} catch (\Exception $e) {
+			$this->flashMessage('Pozadí se nepodařilo uložit.', 'error');
+		}
 
-	*/
+		$this->redirect('this');
+	}
+
+	/**
+	 * Delete Article by id
+	 *
+	 * @param $id
+	 */
+	public function actionDelete($id)
+	{
+		if (!preg_match("/^[0-9]*$/",$id)) {
+			$this->flashMessage('Pozadí nenalezeno.', 'error');
+			$this->redirect('default');
+		} else {
+
+			$this->background->where(['id'=>$id])->delete();
+			@unlink(self::SAVE_DIR . $id . '.jpg');
+			$this->flashMessage('Pozadí odstraněno.', 'success');
+			$this->redirect('default');
+		}
+	}
 }

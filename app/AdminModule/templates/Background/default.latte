@@ -1,0 +1,37 @@
+{**
+ * Listing background
+ * @var $background database connection to background
+ *}
+{block content}
+
+	<h1 n:block=title>Pozadí</h1>
+
+	<h2>Nahrát nové pozadí</h2>
+
+	{control backgroundForm}
+
+	<h2>Nahrané</h2>
+
+	<hr />
+	{if count($background)}
+		<table class="table table-bordered table-responsive">
+			<thead>
+			<th>Akce</th>
+			</thead>
+			<tbody>
+			{foreach $background as $b}
+				<tr>
+					<td>
+						<a href="{$basePath}/content/background/{$b->id}.jpg" class="btn btn-info" target="_blank">Otevřít</a>
+						<a n:href="delete $b->id" class="btn btn-danger">Smazat</a>
+					</td>
+				</tr>
+			{/foreach}
+			</tbody>
+		</table>
+	{else}
+		<p>Žádná pouadí.</p>
+	{/if}
+
+
+{/block}
