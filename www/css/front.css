@@ -15,7 +15,7 @@ body {
 footer {
     position: fixed;
     bottom: 0;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,1);
     border-top: 1px solid #080808;
     width: 100%;
     height: 50px;
@@ -23,6 +23,7 @@ footer {
     color: #AAA;
     font-weight: 300;
     padding-top: 10px;
+    box-shadow: 0 0 10px 10px black;
 }
 
 nav {
@@ -30,7 +31,13 @@ nav {
 }
 
 nav.navbar-inverse {
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,1);
+    box-shadow: 0 0 10px 10px black;
+    height: 50px;
+}
+
+ul.nav.navbar-nav {
+    max-width: 870px;
 }
 
 #main-content {
@@ -39,7 +46,7 @@ nav.navbar-inverse {
     position: absolute;
     top: 50px;
     left:-125%;
-    background: rgba(0,0,30,0.5);
+    background: rgba(0,0,5,0.9);
     box-shadow: 0 0 10px 10px rgba(0,0,30,0.5);
     display: block;
     overflow: auto;
@@ -50,6 +57,25 @@ nav.navbar-inverse {
     #main-content {
         color: rgba(255,255,255,0.9);
     }
+}
+
+@media (min-width: 992px) {
+    body {
+        padding-top: 80px; /*navbar*/
+        padding-bottom: 80px; /*footer*/
+    }
+
+    #main-content {
+        height: calc(100% - 160px);
+        top: 80px;
+    }
+    nav.navbar-inverse {
+        height: 80px;
+    }
+    footer {
+        height: 80px;
+    }
+
 }
 
 h1, h2, h3 {
@@ -130,6 +156,14 @@ img.logo {
 
 }
 
+#navbar ul li a {
+    color:#DDD;
+}
+
+#navbar ul li a:hover {
+    color:#FFF;
+}
+
 @media (min-width: 768px) and (max-width:991px) {
     .navbar-nav>li>a {
         padding: 2.5px 15px;
@@ -138,6 +172,24 @@ img.logo {
         margin-top: -2.5px;
         padding-top: 0;
         height: 50px;
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar-nav>li>a {
+        padding: 10px 10px;
+        height: 40px;
+        font-size: 18px;
+        line-height: 20px;
+    }
+    img.logo {
+        margin-top: -10px;
+        padding-top: 0;
+        height: 80px;
+        margin-bottom: 0;
+    }
+    .navbar-brand {
+        height: 80px !important;
     }
 }
 
@@ -201,15 +253,30 @@ img.logo {
 
 #fucking-line-in-menu {
     position: absolute;
-    top: 25px; left: calc(50% - 230px);;
+    top: 25px; left: calc(50% - 225px);;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
     color: white;
     height: 0;
-    width: 560px;
+    width: 565px;
     border: none;
     border-top: 1px solid rgba(255,255,255,0.6);
 }
+
+@media (min-width: 992px) {
+    #fucking-line-in-menu {
+        top: 40px; left: calc(50% - 275px);
+        width: 663px;
+    }
+}
+
+@media (min-width: 1201px) {
+    #fucking-line-in-menu {
+        top: 40px; left: calc(50% - 376px);
+        width: 663px;
+    }
+}
+
 
 /**
  * TABLES
@@ -269,3 +336,12 @@ table.bordered-col td, table.bordered-col th{
  .flag-ru {  background-image: url("../vector/flag-ru.svg");  }
  .flag-de {  background-image: url("../vector/flag-de.svg");  }
  .flag-fr {  background-image: url("../vector/flag-fr.svg");  }
+
+#navbar {
+    background: rgba(0,0,0,0.9);
+}
+
+
+.dropdown-menu {
+    background: #222;
+}

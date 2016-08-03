@@ -21,7 +21,7 @@ class HomepagePresenter extends BasePresenter
 
 	public function renderDefault()
 	{
-		$this->template->article = $this->article->createSelectionInstance()->where('visible = 1')->order('order');
+		$this->template->article = $this->article->createSelectionInstance()->order('order');
 	}
 
 }
