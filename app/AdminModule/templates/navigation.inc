@@ -18,6 +18,7 @@
 			<ul class="nav navbar-nav">
 				<li><a n:href="Article:default">Stránky</a></li>
 				<li><a n:href="Background:default">Pozadí</a></li>
+				<li><a n:href="Setting:default">Nastavení</a></li>
 
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ext. nástroje <span class="caret"></span></a>

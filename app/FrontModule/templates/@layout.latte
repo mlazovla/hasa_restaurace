@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<meta name="description" content="Pizza Antonio">
+	<meta name="description" content="{if isset($setting['meta_description'])}{$setting['meta_description']}{else}Antonio Pizza Praha 5 Zbraslav{/if}">
 	<meta name="author" content="Vladimír Mlázovský">
 
 	<!-- FACEBOOK -->
@@ -13,13 +13,13 @@
 	<meta property="og:image:type" content="image/png">
 	<meta property="og:image:width" content="256">
 	<meta property="og:image:height" content="256">
-	<meta property="og:url" content="http://antonio-pizza.cz">
-	<meta property="og:title" content="Pizza Antonio">
-	<meta property="og:description" content="Pizzeria Antonio">
+	<meta property="og:url" content="{if isset($setting['facebook_url'])}{$setting['facebook_url']}{else}http://antonio-pizza.eu{/if}">
+	<meta property="og:title" content="{if isset($setting['facebook_title'])}{$setting['facebook_title']}{else}Antonio Pizza Zbraslav{/if}">
+	<meta property="og:description" content="{if isset($setting['facebook_description'])}{$setting['facebook_description']}{else}Antonio Pizza Praha 5 Zbraslav{/if}">
 
 	<link rel="icon" href="{$basePath}/favicon.ico">
 
-	<title>{ifset title}{include title|striptags} | {/ifset} Restaurace</title>
+	<title>{ifset title}{include title|striptags} | {/ifset} {if isset($setting['title'])}{$setting['title']}{else}Antonio Pizza Zbraslav{/if}</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="{$basePath}/css/bootstrap.min.css" rel="stylesheet">
@@ -73,7 +73,7 @@
 
 		</div><!--/.nav-collapse -->
 		<img src="{$basePath}/vector/freewifi.svg" class="visible-xs freewifi-fixed-right-top-corner" alt="free Wifi" />
-		<a href="#" class="navbar-brand visible-xs logo-fixed-left-top-corner"><img src="{$basePath}/img/logo.png" class="logo"/></a>
+		<a href="#" class="navbar-brand visible-xs logo-fixed-left-top-corner"><img src="{$basePath}/vector/logo.svg" class="logo"/></a>
 
 		<div class="visible-sm visible-md visible-lg" id="fucking-line-in-menu" ></div>
 
@@ -88,12 +88,14 @@
 
 <footer>
 	<div class="container small">
+		{if isset($setting['footer'])}{$setting['footer']|noescape}{else}
 		Pizza Antonio Praha 5 Zbraslav |
 		<a href="tel:+420257921449"> tel: 257 921 449</a> |
 		<span class="hidden-xs"> otevřeno od 11:00 do 23:00 | </span>
 		&nbsp;&nbsp;<a href="https://www.tripadvisor.cz" target="_blank" title="Tripadvisor recenze"><img src="{$basePath}/img/tripadvisor.png" class="icon"/></a>&nbsp;&nbsp;
 		<a href="https://www.facebook.com/pages/Pizza-Restaurant-Antonio/148419115220983?fref=ts" target="_blank" title="Pizza Antonio facebook"><img src="{$basePath}/img/fb.png" class="icon"/></a>
 		<span class="pull-right hidden-xs">autor: <i>Vladimír Mlázovský 2016</i></span>
+		{/if}
 	</div>
 </footer>
 
@@ -109,6 +111,6 @@
 <!-- Site JavaScript -->
 <script src="{$basePath}/js/main.js"></script>
 
-
+{block script}{/block}
 </body>
 </html>

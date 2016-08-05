@@ -19,3 +19,13 @@
 		</div>
 	{/foreach}
 {/block}
+
+{block script}
+	{if isset($setting['first_page_id']) && $setting['first_page_id']}
+		<script>
+			$(document).ready( function () {
+				switchMainContent({$setting['first_page_id']});
+			});
+		</script>
+	{/if}
+{/block}

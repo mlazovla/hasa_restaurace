@@ -1,171 +1,138 @@
-# ************************************************************
-# Sequel Pro SQL dump
-# Version 4096
-#
-# http://www.sequelpro.com/
-# http://code.google.com/p/sequel-pro/
-#
-# Host: 127.0.0.1 (MySQL 5.6.21)
-# Database: sos
-# Generation Time: 2015-08-31 19:18:06 +0000
-# ************************************************************
+-- phpMyAdmin SQL Dump
+-- version 3.5.8.2
+-- http://www.phpmyadmin.net
+--
+-- Počítač: wm127.wedos.net:3306
+-- Vygenerováno: Pát 05. srp 2016, 15:25
+-- Verze serveru: 10.0.21-MariaDB
+-- Verze PHP: 5.4.23
 
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+--
+-- Databáze: `d138918_front`
+--
 
+-- --------------------------------------------------------
 
-# Dump of table article
-# ------------------------------------------------------------
+--
+-- Struktura tabulky `article`
+--
 
-CREATE TABLE `article` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `article` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `menu` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `annotation` longtext,
+  `subname` varchar(255) NOT NULL,
   `text` longtext NOT NULL,
+  `visible` tinyint(4) NOT NULL DEFAULT '1',
+  `parent_id` int(10) unsigned DEFAULT NULL,
+  `order` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `author_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `parent_id` (`parent_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=32 ;
 
+--
+-- Vypisuji data pro tabulku `article`
+--
 
+INSERT INTO `article` (`id`, `created_at`, `menu`, `name`, `subname`, `text`, `visible`, `parent_id`, `order`) VALUES
+(10, '2016-07-16 23:27:03', 'Polední Nabídka', 'Hotovky', 'Na počkání', '<p>Buřtgul&aacute;&scaron; a chleba 50 kč</p>', 1, NULL, 8),
+(11, '2016-07-16 23:30:20', 'O Nás', 'Pizzeria Antonio', '', '<p>Jsme dobře zaveden&aacute; pizzerie kousek od Zbraslavsk&eacute;ho n&aacute;měst&iacute;, kde působ&iacute;me již od roku 1998. Na&scaron;e v&yacute;born&aacute; pizza V&aacute;m určitě zachutn&aacute;. Je připravov&aacute;na v peci na dřevo zku&scaron;en&yacute;m pizzařem. Samozřejmě neděl&aacute;me jen pizzu, ale tak&eacute; minutky, steaky, těstoviny a sal&aacute;ty. Vybere si u n&aacute;s opravdu každ&yacute; a zaručujeme, že V&aacute;m u n&aacute;s bude chutnat.</p>', 1, NULL, 9),
+(12, '2016-07-16 23:33:23', 'Fotogalerie', '', '', '', 1, NULL, 10),
+(14, '2016-07-16 23:38:05', 'Kontakt', 'Najdete nás na Zbraslavi', '', '<div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">\n<p>Pizza - restaurant ANTONIO<br />U N&aacute;rodn&iacute; Galerie 482<br />Praha 5 - Zbraslav<br />156 00</p>\n<p>V restauraci jsou oddělen&eacute; nekuř&aacute;ck&eacute; prostory.</p>\n<p>IČ.:71090991<br />DIČ.:CZ7912101142<br />Tě&scaron;&iacute;me se na Va&scaron;i n&aacute;v&scaron;těvu!</p>\n<p><br />Tel.: 257 921 449<br />Mobil: 777 904 044<br />Mobil: 775 304 044</p>\n<p>&nbsp;</p>\n<p>Otev&iacute;rac&iacute; doba.<br />Kuchyně každ&yacute; den od 11h do 22h<br />Bar každ&yacute; den od 11h do 23h</p>\n</div>\n<div class="col-lg-6 col-lg-offset-1 col-md-8 col-sm-12 col-xs-12"><iframe style="border: 0;" src="https://www.google.com/maps/embed?pb=!1m26!1m10!1m3!1d568!2d14.3935427!3d49.9729106!2m1!2f41.5!3m2!1i1024!2i768!4f20!4m13!3e2!4m5!1s0x470b97317b625993%3A0x3950afbcb15e99b7!2zWmJyYXNsYXZza8OpIG7DoW3Em3N0w60sIFByYWd1ZS1aYnJhc2xhdg!3m2!1d49.976397999999996!2d14.393797999999999!4m5!1s0x470b9731f2acc691%3A0x882855f965beb708!2sPIZZA+RESTAURANT+ANTONIO%2C+U+N%C3%A1rodn%C3%AD+galerie%2C+Prague+5!3m2!1d49.978192!2d14.394404999999999!5e1!3m2!1sen!2scz!4v1468755748993" width="100%" height="450" frameborder="0" allowfullscreen="allowfullscreen"></iframe> <br /> <a href="https://www.google.cz/maps/dir/Zbraslavsk%C3%A9+n%C3%A1m%C4%9Bst%C3%AD,+Prague-Zbraslav/PIZZA+RESTAURANT+ANTONIO,+U+N%C3%A1rodn%C3%AD+galerie,+Prague+5/@49.9729106,14.3935427,568a,20y,41.5t/data=!3m1!1e3!4m14!4m13!1m5!1m1!1s0x470b97317b625993:0x3950afbcb15e99b7!2m2!1d14.393798!2d49.976398!1m5!1m1!1s0x470b9731f2acc691:0x882855f965beb708!2m2!1d14.394405!2d49.978192!3e2?hl=en" target="_black"> Mapa k nahl&eacute;dnut&iacute; zde</a></div>\n<p>&nbsp;</p>', 1, NULL, 11),
+(15, '2016-07-16 23:42:12', 'Rozvoz', '', '', '<p><a href="tel:+420257921449">Tel.: 257 92 14 49</a><br /> <a href="tel:+420777904044">Mobil: 777 90 40 44</a><br /> <a href="tel:+420775304044"><strong>Nově: 775 30 40 44</strong></a></p>\n<p>&nbsp;</p>\n<p>&nbsp;</p>\n<p>Pokud jste z okol&iacute; Zbraslavi (cca do 15 km), ve&scaron;ker&eacute; j&iacute;dlo si můžete objednat telefonicky domů. Platba možn&aacute; stravenkami Gastrotour, Ticket Restaurant.</p>\n<p>Cigarety a n&aacute;poje se nepoč&iacute;taj&iacute; do slevy na dopravu.</p>\n<p>Pokud si objedn&aacute;te j&iacute;dlo domů, r&aacute;zem se z V&aacute;s stane profesion&aacute;ln&iacute; kuchař, kter&yacute; překvap&iacute; svoji manželku či tch&yacute;ni hotovou večeř&iacute; bez &scaron;pinav&eacute;ho n&aacute;dob&iacute;.</p>\n<p>&nbsp;</p>\n<div style="display: block; overflow-x: auto;">\n<table class="bordered-col">\n<thead>\n<tr>\n<th>1. P&Aacute;SMO</th>\n<th>2. P&Aacute;SMO</th>\n<th>3. P&Aacute;SMO</th>\n<th>4. P&Aacute;SMO</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>\n<p>Zbraslav<br />Lipence<br />Lahovice<br />Lahovičky<br />Strnady<br />Komořany</p>\n</td>\n<td>\n<p>Mal&aacute; Chuchle<br />Kaz&iacute;n<br />Doln&iacute; Břežany<br />Skochovice<br />Vran&eacute; nad Vltavou</p>\n</td>\n<td>\n<p>Radot&iacute;n<br />J&iacute;lovi&scaron;tě<br />Zlatn&iacute;ky<br />Točn&aacute;<br />Lhota u Doln&iacute;ch Břežan<br />Velk&aacute; Chuchle<br />Modřany</p>\n</td>\n<td>\n<p>Barrandov<br />Měchenice<br />Zvole u Prahy<br />Libu&scaron;<br />Sm&iacute;chov</p>\n</td>\n</tr>\n<tr class="summary">\n<td>ZDARMA</td>\n<td>76 Kč</td>\n<td>114 Kč</td>\n<td>152 Kč</td>\n</tr>\n</tbody>\n</table>\n<center>Rozvoz do ulic Na Lhotk&aacute;ch a Oddechov&aacute; je zpoplatněn č&aacute;stkou 38,-</center>\n<p>&nbsp;</p>\n</div>', 1, NULL, 12),
+(16, '2016-07-17 09:05:37', '<i class="flag flag-cz"></i> Česky', 'Stálý jídelní lístek', 'Dnešní speciality najdete v denní nabídce', '<h3 style="padding-left: 30px;"><em>Předkrmy</em></h3>\n<table>\n<tbody>\n<tr>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">1.&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">50 g&nbsp;</span></span></td>\n<td><span style="font-size: 14px; line-height: 17.5px;"><span style="font-family: Roboto, sans-serif;">Prosciutto crudo</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">129 Kč</span></span></td>\n</tr>\n<tr>\n<td colspan="4"><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">tenk&eacute; pl&aacute;tky parmsk&eacute; &scaron;unky, zelen&eacute; olivy, su&scaron;en&aacute; rajčata</span></span></td>\n</tr>\n<tr>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">2.&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">60g&nbsp;</span></span></td>\n<td><span style="font-size: 14px; line-height: 17.5px;"><span style="font-family: Roboto, sans-serif;">Tartara di Salmone&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">135 Kč</span></span></td>\n</tr>\n<tr>\n<td colspan="4"><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">tatarsk&yacute; biftek z čerstv&eacute;ho lososa, ledov&yacute; sal&aacute;t, citr&oacute;n, pl&aacute;tky opečen&eacute;ho italsk&eacute;ho chleba<br /></span></span></td>\n</tr>\n<tr>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">3. </span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">70g </span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">Carpaccio classico noc parmigiano </span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">149 Kč</span></span></td>\n</tr>\n<tr>\n<td colspan="4"><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">pl&aacute;tky marinovan&eacute; hověz&iacute; sv&iacute;čkov&eacute;, parmaz&aacute;n, rukola, citr&oacute;n</span></span></td>\n</tr>\n<tr>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">4.&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">150g&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">Caprese con pesto&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">105 Kč</span></span></td>\n</tr>\n<tr>\n<td colspan="4"><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">pl&aacute;tky čerstv&yacute;ch rajčat, pl&aacute;tky mozzarelly, olivov&yacute; olej, bazalka, bazalkov&eacute; pesto</span></span></td>\n</tr>\n<tr>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">5.&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">150g&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">Bruschetta al pomodoro 92 KčBruschetta al pomodoro&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">92 Kč</span></span></td>\n</tr>\n<tr>\n<td colspan="4"><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">marinovan&aacute; čerstv&aacute; rajčata, pl&aacute;tky opečen&eacute;ho italsk&eacute;ho chleba, parmaz&aacute;n</span></span></td>\n</tr>\n<tr>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">6.&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">100g&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">Funghi ripieni al forno&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">92 Kč</span></span></td>\n</tr>\n<tr>\n<td colspan="4"><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">žampiony plněn&eacute; parmez&aacute;nem zapečen&eacute; v peci</span></span></td>\n</tr>\n<tr>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">7.&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">150g&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">Bruschetta al Tonno&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">92 Kč</span></span></td>\n</tr>\n<tr>\n<td colspan="4"><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">opečen&yacute; dom&aacute;c&iacute; chl&eacute;b, tuň&aacute;k, červen&aacute; cibule, čerstv&aacute; rajčata, parmaz&aacute;n</span></span></td>\n</tr>\n<tr>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">8. &nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">50g</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">Bruschetta s drůbež&iacute;mi j&aacute;try&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">92 Kč</span></span></td>\n</tr>\n<tr>\n<td colspan="4"><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">opečen&yacute; dom&aacute;c&iacute; chl&eacute;b, drůbež&iacute; j&aacute;tra s česnekem a rozmar&yacute;nem</span></span></td>\n</tr>\n<tr>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">9.&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">70g&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">Bresaola, su&scaron;en&aacute; italsk&aacute; rajčata&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">117 Kč</span></span></td>\n</tr>\n<tr>\n<td colspan="4"><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">tenk&eacute; pl&aacute;tky hověz&iacute; su&scaron;en&eacute; sv&iacute;čkov&eacute;, rukola, parmaz&aacute;n, su&scaron;en&aacute; rajčata, ledov&yacute; sal&aacute;t, zelen&eacute; olivy</span></span></td>\n</tr>\n<tr>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">10.&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">80g&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">Restovan&eacute; dary moře&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">122 Kč</span></span></td>\n</tr>\n<tr>\n<td colspan="4"><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">ledov&yacute; sal&aacute;t, restovan&eacute; krevety, kalam&aacute;ry, chobotničky, mu&scaron;le, citr&oacute;n</span></span></td>\n</tr>\n<tr>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">11.&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">70g&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">Pl&aacute;tky lososa uzen&eacute; na bukov&eacute;m dřevu&nbsp;</span></span></td>\n<td><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">118 Kč</span></span></td>\n</tr>\n<tr>\n<td colspan="4">ledov&yacute; sal&aacute;t, citr&oacute;n, su&scaron;en&aacute; rajčata</td>\n</tr>\n<tr>\n<td>&nbsp;</td>\n<td>&nbsp;</td>\n<td>Couvert&nbsp;</td>\n<td>&nbsp;10 Kč</td>\n</tr>\n<tr>\n<td colspan="4">Bylinkov&eacute; m&aacute;slo, pl&aacute;tky dom&aacute;c&iacute;ho italsk&eacute;ho chleba</td>\n</tr>\n<tr>\n<td>&nbsp;</td>\n<td>&nbsp;</td>\n<td>Ciabatta</td>\n<td>&nbsp;55 Kč</td>\n</tr>\n<tr>\n<td colspan="4"><span style="font-family: Roboto, sans-serif;"><span style="font-size: 14px; line-height: 17.5px;">dom&aacute;c&iacute; italsk&yacute; chl&eacute;b, bylinkov&eacute; m&aacute;slo</span></span></td>\n</tr>\n</tbody>\n</table>\n<h3><em>&nbsp; &nbsp; Pol&eacute;vky</em></h3>\n<p>&nbsp;</p>\n<table>\n<tbody>\n<tr>\n<td>20.</td>\n<td>0,30l</td>\n<td>Staročesk&aacute; cibulačka se s&yacute;rem</td>\n<td>35 Kč&nbsp;</td>\n</tr>\n<tr>\n<td>21.</td>\n<td>0,30l</td>\n<td>Tomatov&aacute; s bazalkov&yacute;m pestem a parmez&aacute;nem</td>\n<td>35 Kč</td>\n</tr>\n<tr>\n<td>22.</td>\n<td>0,30l</td>\n<td>Dle nab&iacute;dky "ž&aacute;dejte na&scaron;i denn&iacute; nab&iacute;dku"</td>\n<td>35 Kč</td>\n</tr>\n</tbody>\n</table>\n<h3>&nbsp; &nbsp;<em>Sal&aacute;ty</em></h3>\n<p>!''"</p>', 0, NULL, 13),
+(18, '2016-07-18 20:27:20', 'Bugy', 'Page of eternal sorrow', '', '<p>To do:</p>\n<p>1) Logo Antonio zmenit na bily text na cernem pozadi</p>\n<p>2) hodit do paticky ikonku Xichtoknihy a Trip advisor (sovicka na daemanuel.cz)</p>\n<p>Uz to tam je... diky (ta zelena sovice)</p>\n<p>3) nakliknuty odkaz = new window</p>\n<p>4) umoznit zobrazeni thumbnailu nad popisem odkazu (galerie)</p>\n<p>???</p>\n<p>Galerie budou vedle sebe hozene obrazky - odkazy - po nakliku se rozjede nove okno s plnym obrazkem</p>\n<p>Pod timto obrazkem by mel byt nazev obrazku (volitelne)</p>\n<p>&nbsp;</p>\n<p>oboji klikatelne pro otevreni plneho obrazku</p>\n<p>5) Zadavatel vel&iacute;:oba čern&eacute; pruhy zvet&scaron;it o polovinu,&nbsp;zakončen&iacute; pruhu do ztracena +&nbsp;p&iacute;smo v&yacute;razněj&scaron;&iacute; - vet&scaron;&iacute;</p>\n<p>6) Popros&iacute;m o syntaxi vlaječek v menu - Ruska, Anglicka, Francouzska&nbsp;</p>\n<p>&lt;i class="flag flag-ru"&gt;&lt;/i&gt;<br />vlajky může&scaron; volit změnou ru na&nbsp;cz,&nbsp;gb,&nbsp;de,&nbsp;fr</p>\n<p>To fix:</p>\n<p>Kopirovani tabulek = tabulka udelana v editoru by mela jit duplikovat (opet v editoru)</p>\n<p>Texty delsi nez 1k slov nejdou ulozit. (500 jde, podrobne sem to netestoval... Max length? Overflow?)</p>\n<p>&nbsp;</p>\n<table border="0" frame="VOID" rules="NONE" cellspacing="0"><colgroup><col width="76" /><col width="69" /><col width="802" /><col width="68" /></colgroup>\n<tbody>\n<tr>\n<td align="CENTER" valign="BOTTOM" width="76" height="19"><span style="color: #000000; font-family: Calibri;">&nbsp;</span></td>\n<td align="CENTER" valign="BOTTOM" width="69"><span style="color: #000000; font-family: Calibri;">&nbsp;</span></td>\n<td align="LEFT" valign="BOTTOM" width="802"><strong><span style="color: #ff0000; font-family: Calibri;">Předkrmy</span></strong></td>\n<td align="CENTER" valign="BOTTOM" width="68"><span style="color: #000000; font-family: Calibri;">&nbsp;</span></td>\n</tr>\n<tr>\n<td align="CENTER" valign="BOTTOM" height="19"><span style="color: #000000; font-family: Calibri;">1.</span></td>\n<td align="CENTER" valign="BOTTOM"><span style="color: #000000; font-family: Calibri;">50g</span></td>\n</tr>\n</tbody>\n</table>', 0, NULL, 15),
+(19, '2016-07-26 23:59:32', 'Test', 'TEST', 'Test', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus luctus egestas leo. Fusce wisi. Vestibulum fermentum tortor id mi. Integer pellentesque quam vel velit. Nulla quis diam. Nullam dapibus fermentum ipsum. Curabitur sagittis hendrerit ante. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Nulla non lectus sed nisl molestie malesuada. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor.</p>\n<p>Praesent id justo in neque elementum ultrices. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat ante, in pharetra metus odio a lectus. Fusce dui leo, imperdiet in, aliquam sit amet, feugiat eu, orci. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat ante, in pharetra metus odio a lectus. Cras pede libero, dapibus nec, pretium sit amet, tempor quis. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Nunc tincidunt ante vitae massa. Nulla pulvinar eleifend sem. Fusce consectetuer risus a nunc. Etiam bibendum elit eget erat. Donec vitae arcu. Fusce consectetuer risus a nunc.</p>\n<p>Nunc auctor. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Phasellus enim erat, vestibulum vel, aliquam a, posuere eu, velit. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat ante, in pharetra metus odio a lectus. Phasellus enim erat, vestibulum vel, aliquam a, posuere eu, velit. Vivamus porttitor turpis ac leo. Etiam bibendum elit eget erat. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus. Integer rutrum, orci vestibulum ullamcorper ultricies, lacus quam ultricies odio, vitae placerat pede sem sit amet enim. Phasellus rhoncus. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Aliquam erat volutpat. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est. Sed ac dolor sit amet purus malesuada congue. Etiam quis quam. Aenean placerat. Nulla accumsan, elit sit amet varius semper, nulla mauris mollis quam, tempor suscipit diam nulla vel leo. Vivamus ac leo pretium faucibus.</p>\n<p>Suspendisse sagittis ultrices augue. Quisque porta. In enim a arcu imperdiet malesuada. Duis bibendum, lectus ut viverra rhoncus, dolor nunc faucibus libero, eget facilisis enim ipsum id lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Duis pulvinar. Duis condimentum augue id magna semper rutrum. Maecenas sollicitudin. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Pellentesque sapien. Proin mattis lacinia justo. Fusce nibh. Vivamus porttitor turpis ac leo. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>\n<p>In convallis. Etiam egestas wisi a erat. Integer malesuada. Nulla non arcu lacinia neque faucibus fringilla. Nunc dapibus tortor vel mi dapibus sollicitudin. Vivamus luctus egestas leo. Sed convallis magna eu sem. Pellentesque arcu. Cras elementum. Duis viverra diam non justo. Nunc auctor. In enim a arcu imperdiet malesuada.</p>\n<p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Vestibulum fermentum tortor id mi. Duis viverra diam non justo. Duis risus. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus. Duis ante orci, molestie vitae vehicula venenatis, tincidunt ac pede. Integer lacinia. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis pulvinar. Proin mattis lacinia justo. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Praesent dapibus. Suspendisse sagittis ultrices augue. Aliquam erat volutpat.</p>\n<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Duis ante orci, molestie vitae vehicula venenatis, tincidunt ac pede. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Suspendisse nisl. Aenean fermentum risus id tortor. Sed convallis magna eu sem. Vivamus luctus egestas leo. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis pulvinar. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce suscipit libero eget elit. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Duis risus. Pellentesque arcu. Integer in sapien. Etiam dictum tincidunt diam. Proin pede metus, vulputate nec, fermentum fringilla, vehicula vitae, justo. Nulla est. Pellentesque ipsum.</p>\n<p>Curabitur vitae diam non enim vestibulum interdum. Integer in sapien. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Aliquam id dolor. Nullam justo enim, consectetuer nec, ullamcorper ac, vestibulum in, elit. Fusce suscipit libero eget elit. Nunc tincidunt ante vitae massa. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Vivamus porttitor turpis ac leo. Nullam rhoncus aliquam metus. Suspendisse sagittis ultrices augue. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis.</p>\n<p>Vivamus ac leo pretium faucibus. Mauris dictum facilisis augue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Duis pulvinar. Phasellus et lorem id felis nonummy placerat. Nunc auctor. Et harum quidem rerum facilis est et expedita distinctio. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Phasellus et lorem id felis nonummy placerat. Fusce wisi.</p>\n<p>Aliquam id dolor. Nullam at arcu a est sollicitudin euismod. Maecenas aliquet accumsan leo. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Aliquam ante. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante. Etiam dictum tincidunt diam. Maecenas sollicitudin. Pellentesque arcu. Aliquam ornare wisi eu metus.</p>\n<p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Etiam neque. Donec quis nibh at felis congue commodo. Praesent in mauris eu tortor porttitor accumsan. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Etiam quis quam. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est. In rutrum. Nullam eget nisl. Maecenas sollicitudin. Etiam commodo dui eget wisi. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Duis condimentum augue id magna semper rutrum.</p>\n<p>Sed vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Curabitur ligula sapien, pulvinar a vestibulum quis, facilisis vel sapien. Integer lacinia. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat ante, in pharetra metus odio a lectus. Maecenas aliquet accumsan leo. Integer in sapien. In dapibus augue non sapien. Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus. Nulla est. Etiam bibendum elit eget erat. Aenean placerat. Nulla est. Nam sed tellus id magna elementum tincidunt. Maecenas aliquet accumsan leo. Suspendisse nisl. Etiam dui sem, fermentum vitae, sagittis id, malesuada in, quam. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Duis ante orci, molestie vitae vehicula venenatis, tincidunt ac pede. Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus. Cras elementum.</p>\n<p>Aliquam in lorem sit amet leo accumsan lacinia. Et harum quidem rerum facilis est et expedita distinctio. Nullam rhoncus aliquam metus. Phasellus et lorem id felis nonummy placerat. Quisque tincidunt scelerisque libero. Suspendisse sagittis ultrices augue. Duis pulvinar. Nulla accumsan, elit sit amet varius semper, nulla mauris mollis quam, tempor suscipit diam nulla vel leo. Integer vulputate sem a nibh rutrum consequat. Donec vitae arcu. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Quisque tincidunt scelerisque libero. Nulla non arcu lacinia neque faucibus fringilla. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Vivamus ac leo pretium faucibus. Aliquam erat volutpat. Integer vulputate sem a nibh rutrum consequat. Nulla non arcu lacinia neque faucibus fringilla.</p>\n<p>Sed convallis magna eu sem. Duis ante orci, molestie vitae vehicula venenatis, tincidunt ac pede. Sed convallis magna eu sem. Aliquam erat volutpat. Sed convallis magna eu sem. Praesent id justo in neque elementum ultrices. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Maecenas libero. Quisque porta. Fusce suscipit libero eget elit. Nulla est. In rutrum. Aliquam erat volutpat. Etiam dui sem, fermentum vitae, sagittis id, malesuada in, quam. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>\n<p>Fusce tellus. Etiam bibendum elit eget erat. In dapibus augue non sapien. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Nulla quis diam. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Mauris metus. Morbi leo mi, nonummy eget tristique non, rhoncus non leo. Mauris metus. Aenean placerat. Mauris metus. Quisque porta. Vivamus luctus egestas leo. Praesent vitae arcu tempor neque lacinia pretium. Vestibulum erat nulla, ullamcorper nec, rutrum non, nonummy ac, erat.</p>\n<p>In rutrum. Nulla accumsan, elit sit amet varius semper, nulla mauris mollis quam, tempor suscipit diam nulla vel leo. Curabitur vitae diam non enim vestibulum interdum. Quisque porta. Integer in sapien. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Sed vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Aenean vel massa quis mauris vehicula lacinia. Etiam egestas wisi a erat. Donec iaculis gravida nulla. Curabitur bibendum justo non orci. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Nulla non arcu lacinia neque faucibus fringilla. Fusce wisi. Ut tempus purus at lorem.</p>\n<p>Pellentesque ipsum. Duis condimentum augue id magna semper rutrum. Aliquam erat volutpat. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. In rutrum. Nullam sit amet magna in magna gravida vehicula. Nam quis nulla. Suspendisse sagittis ultrices augue. Nunc auctor. Praesent id justo in neque elementum ultrices.</p>\n<p>Integer lacinia. Vestibulum fermentum tortor id mi. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Nulla est. Quisque tincidunt scelerisque libero. Duis risus. Nulla non lectus sed nisl molestie malesuada. Proin in tellus sit amet nibh dignissim sagittis. Proin mattis lacinia justo. Donec quis nibh at felis congue commodo. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat ante, in pharetra metus odio a lectus. Nullam faucibus mi quis velit. Curabitur bibendum justo non orci.</p>\n<p>Aliquam id dolor. Nulla pulvinar eleifend sem. Fusce tellus odio, dapibus id fermentum quis, suscipit id erat. Vivamus ac leo pretium faucibus. Phasellus rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Phasellus faucibus molestie nisl. Fusce dui leo, imperdiet in, aliquam sit amet, feugiat eu, orci. Fusce consectetuer risus a nunc. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Quisque tincidunt scelerisque libero. Etiam egestas wisi a erat. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Curabitur sagittis hendrerit ante. Mauris suscipit, ligula sit amet pharetra semper, nibh ante cursus purus, vel sagittis velit mauris vel metus. Phasellus enim erat, vestibulum vel, aliquam a, posuere eu, velit. Nullam dapibus fermentum ipsum.</p>\n<p>Nunc dapibus tortor vel mi dapibus sollicitudin. In convallis. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante. Aenean fermentum risus id tortor. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Etiam commodo dui eget wisi. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Proin pede metus, vulputate nec, fermentum fringilla, vehicula vitae, justo. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Praesent dapibus. Phasellus et lorem id felis nonummy placerat. Suspendisse sagittis ultrices augue. Vivamus ac leo pretium faucibus. In enim a arcu imperdiet malesuada. Donec quis nibh at felis congue commodo. Suspendisse nisl. Proin mattis lacinia justo. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>', 0, NULL, 16),
+(20, '2016-07-27 00:07:47', '<i class="flag flag-cz"></i>', '', '', '', 1, NULL, 2),
+(22, '2016-07-27 00:10:42', '<i class="flag flag-gb"></i>', '', '', '', 1, NULL, 4),
+(23, '2016-07-27 00:10:57', '<i class="flag flag-de"></i>', '', '', '', 1, NULL, 5),
+(25, '2016-07-27 00:17:41', 'Jídelní Lístek', 'Stálý jídelní lístek', 'Dnešní speciality najdete v denní nabídce', '<div class="col-lg-6 col-md-8 col-sm-12">\n<p><a class="menu-link" data-pageid="29">&raquo; Sekan&aacute;</a></p>\n<hr />\n<p><a class="menu-link" data-pageid="30">&raquo; Ř&iacute;zek</a></p>\n<hr />\n<p><a class="menu-link" data-pageid="31">&raquo; Sal&aacute;ty</a></p>\n</div>\n<div class="clearfix">\n<p>&nbsp;</p>\n</div>', 1, 20, 17),
+(26, '2016-07-27 00:18:40', 'Vinný Lístek', 'Lahodné nápoje z celého světa', '', '<p>Glo Glo</p>', 1, 20, 18),
+(27, '2016-07-27 00:21:34', 'Menu', '', '', '', 1, 22, 19),
+(28, '2016-07-27 00:22:02', 'VineList', '', '', '', 1, 22, 20),
+(29, '2016-08-03 22:28:51', 'Jídelní lístek - sekaná', 'Sekaná', '', '', 0, NULL, 21),
+(30, '2016-08-03 22:29:07', 'Jídelní lístek - řízek', 'Řízek', '', '', 0, NULL, 22),
+(31, '2016-08-03 22:29:23', 'Jídelní lístek - šalátík', 'Šalátík', '', '', 0, NULL, 23);
 
-# Dump of table contact
-# ------------------------------------------------------------
+-- --------------------------------------------------------
 
-CREATE TABLE `contact` (
+--
+-- Struktura tabulky `background`
+--
+
+CREATE TABLE IF NOT EXISTS `background` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `surname` varchar(255) DEFAULT NULL,
-  `birthdate` datetime DEFAULT NULL,
-  `phone` varchar(16) DEFAULT NULL,
-  `email` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
+--
+-- Vypisuji data pro tabulku `background`
+--
 
+INSERT INTO `background` (`id`) VALUES
+(1),
+(2);
 
-# Dump of table event
-# ------------------------------------------------------------
+-- --------------------------------------------------------
 
-CREATE TABLE `event` (
+--
+-- Struktura tabulky `setting`
+--
+
+CREATE TABLE IF NOT EXISTS `setting` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `annotation` longtext,
-  `description` longtext,
-  `date` date DEFAULT NULL,
-  `main` tinyint(4) DEFAULT NULL,
-  `ticket` tinyint(4) DEFAULT NULL COMMENT 'Allow reservation and ticket sending',
-  `registration` tinyint(4) DEFAULT NULL COMMENT 'Allow registration on meeting',
-  `document` tinyint(4) DEFAULT NULL,
-  `note` longtext,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-
-# Dump of table file
-# ------------------------------------------------------------
-
-CREATE TABLE `file` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `path` varchar(255) NOT NULL COMMENT 'Path to file',
-  `type` enum('picture','document','other') DEFAULT 'other' COMMENT 'picture, document, other',
-  `user_id` int(11) DEFAULT NULL COMMENT 'Owner',
-  `nice_name` varchar(255) DEFAULT NULL COMMENT 'Name as title',
-  `keywords` varchar(255) DEFAULT NULL COMMENT 'Keywords',
+  `key` varchar(255) NOT NULL DEFAULT '',
+  `value` longtext,
   PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  CONSTRAINT `file_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Paths to pictures, documents and other files.';
+  UNIQUE KEY `key` (`key`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
+--
+-- Vypisuji data pro tabulku `setting`
+--
 
+INSERT INTO `setting` (`id`, `key`, `value`) VALUES
+(4, 'title', 'Antonio Pizza | Zbraslav Praha 5'),
+(6, 'first_page_id', NULL),
+(7, 'meta_description', 'Antonio Pizza Zbraslav'),
+(8, 'facebook_url', 'http://antonio-pizza.eu'),
+(9, 'facebook_title', 'Antonio Pizza Zbraslav'),
+(10, 'facebook_description', 'Antonio Pizza Praha 5 Zbraslav'),
+(11, 'footer', 'Pizza Antonio Praha 5 Zbraslav |\n		<a href="tel:+420257921449"> tel: 257 921 449</a> |\n		<span class="hidden-xs"> otevřeno od 11:00 do 23:00 | </span>\n		&nbsp;&nbsp;<a href="https://www.tripadvisor.cz" target="_blank" title="Tripadvisor recenze"><img src="img/tripadvisor.png" class="icon"/></a>&nbsp;&nbsp;\n		<a href="https://www.facebook.com/pages/Pizza-Restaurant-Antonio/148419115220983?fref=ts" target="_blank" title="Pizza Antonio facebook"><img src="img/fb.png" class="icon"/></a>\n		<span class="pull-right hidden-xs">autor: <i>Vladimír Mlázovský 2016</i></span>');
 
-# Dump of table menu
-# ------------------------------------------------------------
+-- --------------------------------------------------------
 
-CREATE TABLE `menu` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `url` text,
-  `article_id` int(11) DEFAULT NULL,
-  `menu_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `article_id` (`article_id`),
-  KEY `menu_id` (`menu_id`),
-  CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `menu_ibfk_2` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--
+-- Struktura tabulky `user`
+--
 
-
-
-# Dump of table registration
-# ------------------------------------------------------------
-
-CREATE TABLE `registration` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `event_id` int(11) unsigned NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `surname` varchar(255) NOT NULL,
-  `birthdate` datetime NOT NULL,
-  `phone` varchar(24) DEFAULT NULL,
-  `email` varchar(255) NOT NULL,
-  `note` text NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `event_id` (`event_id`),
-  CONSTRAINT `registration_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-
-# Dump of table ticket
-# ------------------------------------------------------------
-
-CREATE TABLE `ticket` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `event_id` int(11) unsigned NOT NULL,
-  `email` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `event_id` (`event_id`),
-  CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-
-# Dump of table user
-# ------------------------------------------------------------
-
-CREATE TABLE `user` (
+CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL COMMENT 'email and login',
   `password` varchar(255) NOT NULL COMMENT 'hashed password',
   `role` varchar(255) DEFAULT 'guest' COMMENT 'user_role',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+--
+-- Vypisuji data pro tabulku `user`
+--
 
-INSERT INTO `user` (`id`, `email`, `password`, `role`)
-VALUES
-	(3,'liskovamaj@gmail.com','$2y$10$FIrpbNKoJLM7RHvfLwVwgOP6d/ct..o8xHzwXQA.q/plDMvbXMV8m','guest'),
-	(4,'mlazovla@gmail.com','$2y$10$7bq17HuG2Rk266U/0VGTYOrFYFATNuwNUxm5WqC6fKLkqw7EZRbIC','guest');
+INSERT INTO `user` (`id`, `email`, `password`, `role`) VALUES
+(4, 'mlazovla@gmail.com', '$2y$10$7bq17HuG2Rk266U/0VGTYOrFYFATNuwNUxm5WqC6fKLkqw7EZRbIC', 'guest'),
+(6, 'hasa.martin@centrum.cz', '$2y$10$LXq0N4RoqeDQxOWqvfBDu.LjSrb5g8IuHkJo8/HdDupXKrSPJheUq', 'guest');
 
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
-UNLOCK TABLES;
+--
+-- Omezení pro exportované tabulky
+--
 
-
-
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+--
+-- Omezení pro tabulku `article`
+--
+ALTER TABLE `article`
+  ADD CONSTRAINT `article_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `article` (`id`) ON DELETE SET NULL;

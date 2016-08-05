@@ -345,3 +345,6 @@ table.bordered-col td, table.bordered-col th{
 .dropdown-menu {
     background: #222;
 }
+.dropdown-menu li a:hover {
+    background: black;
+}

@@ -28,7 +28,7 @@ class BackgroundPresenter extends BasePresenter
 	}
 
 	/**
-	 * Create form for uploading images for better emails design
+	 * Create form for uploading images
 	 * @return Form
 	 */
 	protected function createComponentBackgroundForm()

@@ -26,6 +26,12 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	 */
 	public $background;
 
+	/**
+	 * @var Model\Setting
+	 * @inject
+	 */
+	public $setting;
+
 	protected function getDatabase() {
 		return $this->context->getService('database');
 	}
@@ -34,6 +40,12 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	{
 		$this->template->menu = $this->article->select('id, menu')->where('visible = 1 AND parent_id IS NULL')->order('order ASC');
 		$this->template->backgrounds = $this->background;
+
+		$tmp = array();
+		foreach ($this->setting as $i) {
+			$tmp[$i->key] = $i->value;
+		}
+		$this->template->setting = $tmp;
 	}
 
 	/**
