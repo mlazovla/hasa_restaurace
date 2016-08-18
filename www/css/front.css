@@ -74,32 +74,36 @@ ul.nav.navbar-nav {
     }
     footer {
         height: 80px;
+        font-size: 18px;
     }
 
 }
 
 h1, h2, h3 {
-    font-family: 'GreatVibes';
+    font-family: 'Helvetica Neue', 'Arial', sans-serif;
 }
 
 h1 {
-    color: rgba(255,251,188,0.9);
+    color: white;
     text-shadow: 0 1px 0 rgba(0,0,30,0.8);
     font-size: 45px;
+    font-weight: 200;
 }
 h1 small {
-    color: rgba(230,220,182,0.8);
+    color: rgba(255,255,255,0.8);
 }
 
 h2 {
-    color: rgba(255,251,188,0.9);
+    color: white;
     text-shadow: 0 1px 0 rgba(0,0,30,0.8);
     font-size: 35px;
+    font-weight: 200;
 }
 
 h3 {
-    color: rgba(255,251,188,0.9);
+    color: white;
     font-size: 30px;
+    font-weight: 200;
 }
 
 h4,h5,h6 {
@@ -136,10 +140,18 @@ h4,h5,h6 {
     height: 30px;
 }
 
+.freewifi-fixed-right-top-corner-sm {
+    position: fixed;
+    top: 10px;
+    right:5px;
+    height: 30px;
+}
+
 #retarded-wifi-logo {
     position: fixed;
     top: 17px;
     right:30px;
+    height: 60px;
 }
 
 .logo-fixed-left-top-corner {
@@ -285,13 +297,13 @@ img.logo {
 table {
     margin: auto auto;
     border: 2px solid rgba(167,170,180,0.8);
-    background-color: rgba(255,250,250,0.1);
+    background-color: rgba(3,3,3,1);
     box-shadow:0 0 8px rgba(0,0,18,0.2);
 }
 thead {
     font-weight: 600;
     border-bottom: 3px double rgba(167,170,180,0.8);
-    background-color: rgba(255,250,250,0.2);
+    background-color: rgba(0,0,0,1);
 }
 table th {
     text-align: center;
@@ -347,4 +359,12 @@ table.bordered-col td, table.bordered-col th{
 }
 .dropdown-menu li a:hover {
     background: black;
+}
+
+.odkazy a {
+    font-size: 18px;
+}
+
+.odkazy hr {
+    border-color: rgba(230,230,230,0.3);
 }

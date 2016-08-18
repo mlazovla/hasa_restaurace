@@ -19,6 +19,9 @@ class HomepagePresenter extends BasePresenter
 	 */
 	public $article;
 
+	/**
+	 * Load all articles
+	 */
 	public function renderDefault()
 	{
 		$this->template->article = $this->article->createSelectionInstance()->order('order');

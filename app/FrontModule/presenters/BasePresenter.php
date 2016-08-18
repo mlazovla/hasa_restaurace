@@ -38,7 +38,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 
 	public function beforeRender()
 	{
-		$this->template->menu = $this->article->select('id, menu')->where('visible = 1 AND parent_id IS NULL')->order('order ASC');
+		$this->template->menu = $this->article->select('id, menu, backgroundColor')->where('visible = 1 AND parent_id IS NULL')->order('order ASC');
 		$this->template->backgrounds = $this->background;
 
 		$tmp = array();

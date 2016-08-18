@@ -25,6 +25,9 @@
 		<script>
 			$(document).ready( function () {
 				switchMainContent({$setting['first_page_id']});
+				{if isset($setting['first_page_background']) && $setting['first_page_background']}
+					switchBackgroundColor({$setting['first_page_background']});
+				{/if}
 			});
 		</script>
 	{/if}

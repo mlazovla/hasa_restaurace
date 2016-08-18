@@ -73,6 +73,9 @@ class ArticlePresenter extends BasePresenter
 		$form->addSubmit('save', 'Uložit')
 			->setAttribute('class', 'btn btn-primary');
 
+		$form->addText('backgroundColor', 'Barva pozadí')
+			->addRule($form::MAX_LENGTH, 'Definujte barvu například pomocí rgba(255,127,0,1)',31);
+
 		$form->onSuccess[] = array($this, 'articleFormSucceeded');
 
 		return $form;
@@ -88,6 +91,7 @@ class ArticlePresenter extends BasePresenter
 			'text' => $values['text'],
 			'visible' => $values['visible'],
 			'parent_id' => ($values['parent_id']) ? $values['parent_id'] : null,
+			'backgroundColor' => ($values['backgroundColor']) ? $values['backgroundColor'] : null,
 		];
 
 		$articleId = $this->getParameter('id');

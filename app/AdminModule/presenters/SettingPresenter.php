@@ -116,6 +116,8 @@ class SettingPresenter extends BasePresenter
 		$menu[''] = '--- Prázdná stránka ---';
 		$form->addSelect('first_page_id', 'První stránka', $menu);
 
+		$form->addText('first_page_background', 'Pozadí první strany')->setAttribute('placeholder', 'rgba(0,0,5,0.9)');
+
 		$form->addSubmit('send', 'Uložit');
 
 		$form->onSuccess[] = array($this, 'firstPageFormSucceeded');
@@ -125,18 +127,35 @@ class SettingPresenter extends BasePresenter
 
 	public function firstPageFormSucceeded(UI\Form $form, $values)
 	{
-		$val = $values['first_page_id'] ?  $values['first_page_id'] : null;
+		$id = $values['first_page_id'] ?  $values['first_page_id'] : null;
+		$background = $values['first_page_background'] ?  $values['first_page_background'] : null;
+
 		$row = null;
 		foreach ($this->setting->createSelectionInstance()->where(['key' => 'first_page_id']) as $i) {
 			$row = $i;
 		}
 
+		// ID of first page
 		if ($row) {
 			// update
-			$row->update(['value'=>$val]);
+			$row->update(['value'=>$id]);
 		} else {
 			//insert
-			$this->setting->insert(['key'=>'first_page_id', 'value'=>$val]);
+			$this->setting->insert(['key'=>'first_page_id', 'value'=>$id]);
+		}
+
+		// Background of first page
+		$row = null;
+		foreach ($this->setting->createSelectionInstance()->where(['key' => 'first_page_background']) as $i) {
+			$row = $i;
+		}
+
+		if ($row) {
+			// update
+			$row->update(['value'=>$background]);
+		} else {
+			//insert
+			$this->setting->insert(['key'=>'first_page_id', 'value'=>$background]);
 		}
 
 		$this->flashMessage('Byla nastavena První strana.', 'success');

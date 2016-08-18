@@ -55,16 +55,16 @@
 				{foreach $menu as $i}
 					{if count($i->related('article'))}
 						<li class="dropdown">
-							<a data-pageid="{$i->id}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{$i->menu|noescape} <span class="caret"></span></a>
+							<a data-pageid="{$i->id}" data-backgroundcolor="{$i->backgroundColor}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{$i->menu|noescape} <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								{foreach $i->related('article') as $subi}
-									<li><a data-pageid="{$subi->id}" class="menu-link">{$subi->menu|noescape}</a></li>
+									<li><a data-pageid="{$subi->id}" data-backgroundcolor="{$subi->backgroundColor}" class="menu-link">{$subi->menu|noescape}</a></li>
 								{/foreach}
 							</ul>
 						</li>
 					{else}
 						<li>
-							<a data-pageid="{$i->id}" class="menu-link">{$i->menu|noescape}</a>
+							<a data-pageid="{$i->id}" data-backgroundcolor="{$i->backgroundColor}" class="menu-link">{$i->menu|noescape}</a>
 						</li>
 					{/if}
 				{/foreach}
@@ -73,6 +73,8 @@
 
 		</div><!--/.nav-collapse -->
 		<img src="{$basePath}/vector/freewifi.svg" class="visible-xs freewifi-fixed-right-top-corner" alt="free Wifi" />
+		<img src="{$basePath}/vector/freewifi.svg" class="visible-sm freewifi-fixed-right-top-corner-sm" alt="free Wifi" />
+
 		<a href="#" class="navbar-brand visible-xs logo-fixed-left-top-corner"><img src="{$basePath}/vector/logo.svg" class="logo"/></a>
 
 		<div class="visible-sm visible-md visible-lg" id="fucking-line-in-menu" ></div>

@@ -1,6 +1,7 @@
 /* Layout scripts */
 
-function restartBackgroundAnimation() {
+function restartBackgroundAnimation()
+{
     var ids = [];
     $(".background-slide").each( function (index) {
         ids[index] = $(this).attr('id');
@@ -13,7 +14,8 @@ function restartBackgroundAnimation() {
     }
 }
 
-function switchMainContent(id) {
+function switchMainContent(id)
+{
     // changing content
     $( ".page" ).slideUp();
     $( "#page" + id ).slideDown();
@@ -40,6 +42,15 @@ function switchMainContent(id) {
                 // Animation complete.
             });
         });
+    }
+}
+
+function switchBackgroundColor(color)
+{
+    if (color) {
+        $('#main-content').css('background', color);
+    } else {
+        $('#main-content').css('background', 'rgba(0,0,5,0.9)');
     }
 }
 
@@ -72,6 +83,7 @@ $(document).ready( function() {
      */
     $( ".menu-link" ).click(function() {
         switchMainContent( $(this).data("pageid") );
+        switchBackgroundColor( $(this).data("backgroundcolor") );
     });
 
     $("a.navbar-brand").click(function() {

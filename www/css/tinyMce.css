@@ -84,3 +84,16 @@ a, a:visited, a:hover, a:active {
 table.bordered-col td, table.bordered-col th{
     border-left: 1px solid rgba(167,170,180,0.8);
 }
+
+hr {
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-color-top: rgba(230,230,230,0.9);
+    height: 0;
+
+}
+
+.odkazy a {
+    font-size: 18px;
+}
