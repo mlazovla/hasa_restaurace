@@ -46,16 +46,18 @@ ul.nav.navbar-nav {
     position: absolute;
     top: 50px;
     left:-125%;
-    background: rgba(0,0,5,0.9);
+    background: rgba(0,0,5,0.75);
     box-shadow: 0 0 10px 10px rgba(0,0,30,0.5);
     display: block;
     overflow: auto;
     z-index: 10;
     color: rgba(255,255,255,0.8);
+    font-size: 17px;
 }
 @media (max-width: 768px) {
     #main-content {
         color: rgba(255,255,255,0.9);
+        font-size: 14px;
     }
 }
 
@@ -84,13 +86,13 @@ h1, h2, h3 {
 }
 
 h1 {
-    color: white;
+    color: rgba(255,230,220,1);
     text-shadow: 0 1px 0 rgba(0,0,30,0.8);
     font-size: 45px;
     font-weight: 200;
 }
 h1 small {
-    color: rgba(255,255,255,0.8);
+    color: rgba(255,230,220,0.95);
 }
 
 h2 {
@@ -142,9 +144,9 @@ h4,h5,h6 {
 
 .freewifi-fixed-right-top-corner-sm {
     position: fixed;
-    top: 10px;
-    right:5px;
-    height: 30px;
+    top: 7px;
+    right: 0px;
+    height: 45px;
 }
 
 #retarded-wifi-logo {
@@ -299,7 +301,9 @@ table {
     border: 2px solid rgba(167,170,180,0.8);
     background-color: rgba(3,3,3,1);
     box-shadow:0 0 8px rgba(0,0,18,0.2);
+    border-collapse: collapse;
 }
+
 thead {
     font-weight: 600;
     border-bottom: 3px double rgba(167,170,180,0.8);
@@ -316,6 +320,7 @@ table td, table th {
 table td {
     text-align: left;
     vertical-align: top;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 table tr.summary {
@@ -363,8 +368,14 @@ table.bordered-col td, table.bordered-col th{
 
 .odkazy a {
     font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.7px;
 }
 
 .odkazy hr {
     border-color: rgba(230,230,230,0.3);
+}
+
+a:hover {
+    cursor: pointer !important;
 }

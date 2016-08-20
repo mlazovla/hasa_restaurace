@@ -50,7 +50,7 @@ function switchBackgroundColor(color)
     if (color) {
         $('#main-content').css('background', color);
     } else {
-        $('#main-content').css('background', 'rgba(0,0,5,0.9)');
+        $('#main-content').css('background', 'rgba(0,0,5,0.75)');
     }
 }
 

@@ -116,7 +116,7 @@ class SettingPresenter extends BasePresenter
 		$menu[''] = '--- Prázdná stránka ---';
 		$form->addSelect('first_page_id', 'První stránka', $menu);
 
-		$form->addText('first_page_background', 'Pozadí první strany')->setAttribute('placeholder', 'rgba(0,0,5,0.9)');
+		$form->addText('first_page_background', 'Pozadí první strany')->setAttribute('placeholder', 'rgba(0,0,5,0.75)');
 
 		$form->addSubmit('send', 'Uložit');
 

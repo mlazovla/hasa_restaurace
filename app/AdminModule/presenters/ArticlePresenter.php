@@ -67,7 +67,7 @@ class ArticlePresenter extends BasePresenter
 		$form->addTextArea('text', 'Článek:')
 			->setAttribute('class', 'tinyMCE');
 
-		$form->addCheckbox('visible', 'Zobrazit na webu:')
+		$form->addCheckbox('visible', 'Zobrazit v menu:')
 			->setDefaultValue(true);
 
 		$form->addSubmit('save', 'Uložit')
