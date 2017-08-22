@@ -11,7 +11,7 @@ use Nette,
  */
 abstract class BasePresenter extends Nette\Application\UI\Presenter
 {
-	const NOTIFY_EMAIL_ADDRESS = 'hasa.martin@centrum.cz';
+	const NOTIFY_EMAIL_ADDRESS = 'mlazovla@gmail.com';
 	const DEFAULT_ARTICLE_ID = 1;
 
 	/**
