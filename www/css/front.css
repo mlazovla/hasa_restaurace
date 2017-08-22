@@ -24,6 +24,7 @@ footer {
     font-weight: 300;
     padding-top: 10px;
     box-shadow: 0 0 10px 10px black;
+    font-size: 14px;
 }
 
 nav {
@@ -53,6 +54,7 @@ ul.nav.navbar-nav {
     z-index: 10;
     color: rgba(255,255,255,0.8);
     font-size: 17px;
+    padding-bottom: 80px;
 }
 @media (max-width: 768px) {
     #main-content {

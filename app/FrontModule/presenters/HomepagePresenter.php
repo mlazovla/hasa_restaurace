@@ -26,5 +26,4 @@ class HomepagePresenter extends BasePresenter
 	{
 		$this->template->article = $this->article->createSelectionInstance()->order('order');
 	}
-
 }

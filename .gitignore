@@ -1,7 +1,12 @@
 /log
 /temp
 /.idea
-*.DS_Store
+/vendor
 /app/config/config.local.neon
-/app/config/config.neon
-/www/content
+/www/content/*
+!/www/content/.pathholder
+**/.DS_Store
+/composer.lock
+/www/css/admin.css
+/www/css/frontend.css
+*.css.map

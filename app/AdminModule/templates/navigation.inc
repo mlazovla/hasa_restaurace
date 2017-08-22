@@ -23,7 +23,8 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ext. nástroje <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="http://www.google.com/analytics/">Google Analytics</a></li>
+						<li><a href="http://www.google.com/analytics/" target="_blank">Google Analytics</a></li>
+						<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Colors/Color_picker_tool" target="_blank">Color picker</a></li>
 					</ul>
 				</li>
 			</ul>
